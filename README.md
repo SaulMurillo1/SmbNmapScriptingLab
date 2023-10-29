@@ -21,9 +21,38 @@ Disclaimer: The Kali Linux user machine and target machine used in this project 
 
 <h2>Project walk-through:</h2>
 
-<p align="center">
+<p align="left">
 Ping the target machine to discover if it is active: <br/>
-<img src="ADD LINK HERE" height="80%" width="80%" alt="SMB Nmap Scripting"/>
+- As you can see, we are getting replies from target machine. <br/>
+ <br/>
+ Command: ping 10.3.26.54
+ <br/>
+<br/>
+<img src="https://i.imgur.com/cY5DR4T.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
+<br />
+<br />
+<br />
+<br />
+Run Nmap scan against target machine IP: <br/>
+- It looks like the target has multiple tcp ports open with SMB (port 445) being one of the open ports. <br/>
+<br/>
+Command: nmap 10.3.26.54
+<br/>
+<br/>
+<img src="https://i.imgur.com/zRfdBFt.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
+<br />
+<br />
+<br />
+<br />
+Run Nmap script that will list supported SMB protocols: <br/>
+- You can see that once of the dialects is SMBv1 which is dangerous, but default. <br/>
+<br/>
+Command: nmap 10.3.26.54 -445 --script smb-protocols
+<br/>
+<br/>
+<img src="https://i.imgur.com/PIx2jcz.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
+<br />
+<br />
 <br />
 <br />
 
