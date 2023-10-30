@@ -189,6 +189,40 @@ Command: nmap 10.3.16.16 -p 445 --script smb-enum-groups --script-args smbuserna
 <br />
 <br />
 <br />
+Run Nmap script that will enumerate services on the target machine: <br/>
+<br/>
+Command: nmap 10.3.16.16 -p 445 --script smb-enum-services --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
+<br/>
+<br/>
+<img src="https://i.imgur.com/keVKNcr.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
+<br />
+<img src="https://i.imgur.com/Uw1NGim.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
+<br />
+<img src="https://i.imgur.com/S0lZQ7L.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+Run Nmap script that will enumerate shared folders and also list the directories in them: <br/>
+<br/>
+Command: nmap 10.3.16.16 -p 445 --script smb-enum-shares,smb-ls --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
+<br/>
+<br/>
+<img src="https://i.imgur.com/1FfAXPA.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
+<br />
+<img src="https://i.imgur.com/0PnHbhc.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
+<br />
+<img src="https://i.imgur.com/cZwQPZ0.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
+<br />
+<img src="https://i.imgur.com/DOSPR7D.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
 </p>
 
