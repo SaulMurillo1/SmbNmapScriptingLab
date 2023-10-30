@@ -53,7 +53,7 @@ Command: nmap 10.3.16.16
 Run Nmap script that will list supported SMB protocols: <br/>
 - You can see that one of the dialects is SMBv1 which is dangerous, but default. <br/>
 <br/>
-Command: nmap 10.3.16.16 -445 --script smb-protocols
+Command: nmap 10.3.16.16 -p 445 --script smb-protocols
 <br/>
 <br/>
 <img src="https://i.imgur.com/qdtJ5se.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
@@ -67,7 +67,7 @@ Command: nmap 10.3.16.16 -445 --script smb-protocols
 Run Nmap script that will enumerate SMB security level: <br/>
 - It looks like this SMB server has message signing disabled which is dangerous. If message signing isn't required, the SMB server may be vulnerable to man-in-the-middle attacks or SMB-relay attacks.<br/>
 <br/>
-Command: nmap 10.3.16.16 -445 --script smb-security-mode
+Command: nmap 10.3.16.16 -p 445 --script smb-security-mode
 <br/>
 <br/>
 <img src="https://i.imgur.com/0pxODL1.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
@@ -81,7 +81,7 @@ Command: nmap 10.3.16.16 -445 --script smb-security-mode
 Run Nmap script that will enumerate users logged into system through SMB share: <br/>
 - Since we are running this script without SMB server credentials, this Nmap script will only enumerate any user sessions that were accessed without any credentials. It looks like user bob is logged in without any credentials, which is possible due to the target machine having the guest login enabled.<br/>
 <br/>
-Command: nmap 10.3.16.16 -445 --script smb-enum-sessions
+Command: nmap 10.3.16.16 -p 445 --script smb-enum-sessions
 <br/>
 <br/>
 <img src="https://i.imgur.com/uA64dCC.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
@@ -95,7 +95,7 @@ Command: nmap 10.3.16.16 -445 --script smb-enum-sessions
 Run Nmap script that will enumerate users logged into system through SMB share: <br/>
 - This is same command as before but with the knowledge of knowing the SMB server credentials. As you can see, there is now a new active session that states "it's probably you".<br/>
 <br/>
-Command: nmap 10.3.16.16 -445 --script smb-enum-sessions --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
+Command: nmap 10.3.16.16 -p 445 --script smb-enum-sessions --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
 <br/>
 <br/>
 <img src="https://i.imgur.com/yAyHd7M.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
@@ -109,7 +109,7 @@ Command: nmap 10.3.16.16 -445 --script smb-enum-sessions --script-args smbuserna
 Run Nmap script that will enumerate all available shares: <br/>
 - We can see all of the shares using guest users along with the permission of each folder or drive. Also, we can see that the IPC$ share has read and write permissions. The IPC$ share is also known as a null session connection which means that Windows lets anonymous users perform certain activites, such as enumerating the names of domain accounts and network shares.<br/>
 <br/>
-Command: nmap 10.3.16.16 -445 --script smb-enum-shares
+Command: nmap 10.3.16.16 -p 445 --script smb-enum-shares
 <br/>
 <br/>
 <img src="https://i.imgur.com/CwZWsDF.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
@@ -123,7 +123,7 @@ Command: nmap 10.3.16.16 -445 --script smb-enum-shares
 Using valid SMB credentials, run Nmap script that will enumerate all available shares: <br/>
 - We can now see a bit more information, such as the administrator has full read and write privileges to the entire C$.<br/>
 <br/>
-Command: nmap 10.3.16.16 -445 --script smb-enum-shares --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
+Command: nmap 10.3.16.16 -p 445 --script smb-enum-shares --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
 <br/>
 <br/>
 <img src="https://i.imgur.com/Wg2yiOl.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
@@ -138,7 +138,7 @@ Command: nmap 10.3.16.16 -445 --script smb-enum-shares --script-args smbusername
 Run Nmap script that will enumerate Windows users on the target machine: <br/>
 - We can see that there are three users on the target machine (Administrator, bob, & Guest).<br/>
 <br/>
-Command: nmap 10.3.16.16 -445 --script smb-enum-users --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
+Command: nmap 10.3.16.16 -p 445 --script smb-enum-users --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
 <br/>
 <br/>
 <img src="https://i.imgur.com/ppEpbRK.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
@@ -152,7 +152,7 @@ Command: nmap 10.3.16.16 -445 --script smb-enum-users --script-args smbusername=
 Run Nmap script that will enumerate SMB server statistics: <br/>
 - We can see statistics, such as failed logings, permission errors, system errors, etc.<br/>
 <br/>
-Command: nmap 10.3.16.16 -445 --script smb-server-stats --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
+Command: nmap 10.3.16.16 -p 445 --script smb-server-stats --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
 <br/>
 <br/>
 <img src="https://i.imgur.com/xdWcvfd.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
@@ -165,7 +165,7 @@ Command: nmap 10.3.16.16 -445 --script smb-server-stats --script-args smbusernam
 <br />
 Run Nmap script that will enumerate available domains on the target machine: <br/>
 <br/>
-Command: nmap 10.3.16.16 -445 --script smb-enum-domains --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
+Command: nmap 10.3.16.16 -p 445 --script smb-enum-domains --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
 <br/>
 <br/>
 <img src="https://i.imgur.com/rWl9yWu.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
@@ -178,7 +178,7 @@ Command: nmap 10.3.16.16 -445 --script smb-enum-domains --script-args smbusernam
 <br />
 Run Nmap script that will enumerate available user groups on the target machine: <br/>
 <br/>
-Command: nmap 10.3.16.16 -445 --script smb-enum-groups --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
+Command: nmap 10.3.16.16 -p 445 --script smb-enum-groups --script-args smbusername=administrator,smbpassword=*password_hidden_for_privacy*
 <br/>
 <br/>
 <img src="https://i.imgur.com/rOYtILz.png" height="80%" width="80%" alt="SMB Nmap Scripting" class="center"/>
